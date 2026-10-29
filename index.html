@@ -3,32 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoClips - Tu Plataforma de Clips</title>
+    <title>NeoClips</title>
     <style>
-        /* Estilos base con temática oscura y neón */
+        /* Estilos base */
         body {
             background-color: #0d0e12;
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
+        /* Encabezado con tu Logo real y Nombre al lado */
         header {
             background-color: #161922;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid #00f2fe; /* Línea neón */
-            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2);
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #00f2fe;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.1);
         }
 
-        h1 {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #ffffff; /* Fondo blanco para que resalte el contorno del logo */
+            padding: 2px;
+        }
+
+        header h1 {
             margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, #00f2fe, #4facfe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
         }
 
         .container {
@@ -38,91 +53,213 @@
             text-align: center;
         }
 
-        .welcome-box {
-            background: #161922;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #232836;
-            margin-bottom: 40px;
+        /* Slogan de la página */
+        .slogan-box h2 {
+            font-size: 2.2rem;
+            background: linear-gradient(45deg, #00f2fe, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
 
-        .btn-neon {
-            display: inline-block;
-            padding: 12px 30px;
-            color: #00f2fe;
+        .slogan-box p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            margin-top: 0;
+            letter-spacing: 0.5px;
+        }
+
+        /* Barra Estilo Glass (Glassmorphism) para los botones */
+        .glass-nav {
+            display: inline-flex;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin: 30px 0;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-btn {
+            color: #ffffff;
             text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            border: 2px solid #00f2fe;
+            padding: 10px 24px;
             border-radius: 30px;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+            font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
 
-        .btn-neon:hover {
-            background: #00f2fe;
-            color: #0d0e12;
-            box-shadow: 0 0 25px #00f2fe;
+        .glass-btn:hover {
+            background: rgba(0, 242, 254, 0.2);
+            color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
         }
 
-        /* Cuadrícula para futuros clips */
-        .clips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .clip-card {
+        /* Secciones de Contenido */
+        .section-panel {
             background: #161922;
-            border-radius: 8px;
-            overflow: hidden;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
             border: 1px solid #232836;
-        }
-
-        .clip-placeholder {
-            background: #232836;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-        }
-
-        .clip-info {
-            padding: 15px;
             text-align: left;
         }
+
+        .section-panel h3 {
+            font-size: 1.6rem;
+            color: #00f2fe;
+            margin-top: 0;
+            border-left: 4px solid #b155ff;
+            padding-left: 15px;
+        }
+
+        /* Cuadrículas de elementos */
+        .grid-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #1f2330;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: center;
+        }
+
+        .card h4 {
+            color: #00f2fe;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            text-align: left;
+            margin: 0;
+        }
+
+        /* Imágenes de productos con fondo blanco */
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+
+        /* Enlaces de contacto */
+        .contact-container {
+            margin-top: 20px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            background: #232836;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .contact-link.ig:hover { background: #e1306c; }
+        .contact-link.wa:hover { background: #25d366; }
     </style>
 </head>
 <body>
 
+    <!-- Encabezado con tu Logo Real y Nombre alineados -->
     <header>
-        <h1>NEOCLIPS</h1>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo NeoClips" class="logo-img">
+            <h1>Neoclips</h1>
+        </div>
     </header>
 
     <div class="container">
-        <div class="welcome-box">
-            <h2>¡Tu nueva web está en camino! 🚀</h2>
-            <p>Este es el diseño base de NeoClips alojado en GitHub Pages.</p>
-            <br>
-            <a href="#" class="btn-neon">Explorar Clips</a>
+        <!-- Textos principales (Slogan) -->
+        <div class="slogan-box">
+            <h2>La nueva forma de crear y ver video.</h2>
+            <p>Contenido corto, dinámico digital.</p>
         </div>
 
-        <!-- Espacio listo para cuando agregues tus videos -->
-        <div class="clips-grid">
-            <div class="clip-card">
-                <div class="clip-placeholder">Espacio para Video 1</div>
-                <div class="clip-info"><h3>Mi Primer Clip</h3></div>
-            </div>
-            <div class="clip-card">
-                <div class="clip-placeholder">Espacio para Video 2</div>
-                <div class="clip-info"><h3>Jugada Épica</h3></div>
-            </div>
-            <div class="clip-card">
-                <div class="clip-placeholder">Espacio para Video 3</div>
-                <div class="clip-info"><h3>Momento Divertido</h3></div>
+        <!-- Menú en barra estilo Glass -->
+        <div class="glass-nav">
+            <a href="#trabajos" class="glass-btn">Trabajos</a>
+            <a href="#productos" class="glass-btn">Productos</a>
+            <a href="#contacto" class="glass-btn">Contacto</a>
+        </div>
+
+        <!-- SECCIÓN TRABAJOS -->
+        <div id="trabajos" class="section-panel">
+            <h3>Mis Trabajos</h3>
+            <p>Muestras profesionales de mis proyectos multimedia recientes:</p>
+            <div class="grid-box">
+                <div class="card" style="text-align: left;">
+                    <h4>🎬 Edición de Videos</h4>
+                    <p>Clips dinámicos optimizados para redes sociales, efectos visuales y transiciones avanzadas.</p>
+                </div>
+                <div class="card" style="text-align: left;">
+                    <h4>📸 Fotos</h4>
+                    <p>Corrección de color, retoque digital y fotografía de alta calidad lista para publicar.</p>
+                </div>
+                <div class="card" style="text-align: left;">
+                    <h4>🎨 Logos e Identidad</h4>
+                    <p>Diseño de marcas únicas y vectores adaptables a cualquier formato tecnológico o comercial.</p>
+                </div>
             </div>
         </div>
+
+        <!-- SECCIÓN PRODUCTOS -->
+        <div id="productos" class="section-panel">
+            <h3>Valbuena Creativa</h3>
+            <p>Artículos personalizados y servicios disponibles de alta calidad:</p>
+            <div class="grid-box">
+                <div class="card">
+                    <!-- Imagen de marcador de llaveros con fondo blanco -->
+                    <img src="https://unsplash.com" alt="Llaveros" class="product-img">
+                    <h4>🔑 Llaveros Personalizados</h4>
+                    <p>Diseños únicos adaptados a tus gustos, logotipos o personajes favoritos con acabados resistentes.</p>
+                </div>
+                <div class="card">
+                    <!-- Imagen de marcador de fotocopias con fondo blanco -->
+                    <img src="https://unsplash.com" alt="Fotocopias" class="product-img">
+                    <h4>🖨️ Fotocopias e Impresiones</h4>
+                    <p>Servicio rápido de duplicación de documentos y proyectos con nitidez excelente a blanco y negro o color.</p>
+                </div>
+                <div class="card">
+                    <!-- Imagen de marcador de sublimación con fondo blanco -->
+                    <img src="https://unsplash.com" alt="Sublimación" class="product-img">
+                    <h4>☕ Sublimación</h4>
+                    <p>Estampado de tazas, prendas y artículos promocionales con transferencia de color vívida y duradera.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN CONTACTO -->
+        <div id="contacto" class="section-panel">
+            <h3>Contacto Directo</h3>
+            <p>¿Tienes alguna consulta o deseas realizar un pedido? Escríbeme directamente por mis canales oficiales:</p>
+            <div class="contact-container">
+                <a href="https://www.instagram.com/koff_san/?hl=es-la" target="_blank" class="contact-link ig">Instagram 📸</a>
+                <a href="https://wa.me" target="_blank" class="contact-link wa">WhatsApp 💬</a>
+            </div>
+        </div>
+
     </div>
 
 </body>

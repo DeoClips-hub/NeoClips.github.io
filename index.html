@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoClips - Tu Plataforma de Clips</title>
+    <style>
+        /* Estilos base con temática oscura y neón */
+        body {
+            background-color: #0d0e12;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #161922;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #00f2fe; /* Línea neón */
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .welcome-box {
+            background: #161922;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #232836;
+            margin-bottom: 40px;
+        }
+
+        .btn-neon {
+            display: inline-block;
+            padding: 12px 30px;
+            color: #00f2fe;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 2px solid #00f2fe;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-neon:hover {
+            background: #00f2fe;
+            color: #0d0e12;
+            box-shadow: 0 0 25px #00f2fe;
+        }
+
+        /* Cuadrícula para futuros clips */
+        .clips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .clip-card {
+            background: #161922;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #232836;
+        }
+
+        .clip-placeholder {
+            background: #232836;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+        }
+
+        .clip-info {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NEOCLIPS</h1>
+    </header>
+
+    <div class="container">
+        <div class="welcome-box">
+            <h2>¡Tu nueva web está en camino! 🚀</h2>
+            <p>Este es el diseño base de NeoClips alojado en GitHub Pages.</p>
+            <br>
+            <a href="#" class="btn-neon">Explorar Clips</a>
+        </div>
+
+        <!-- Espacio listo para cuando agregues tus videos -->
+        <div class="clips-grid">
+            <div class="clip-card">
+                <div class="clip-placeholder">Espacio para Video 1</div>
+                <div class="clip-info"><h3>Mi Primer Clip</h3></div>
+            </div>
+            <div class="clip-card">
+                <div class="clip-placeholder">Espacio para Video 2</div>
+                <div class="clip-info"><h3>Jugada Épica</h3></div>
+            </div>
+            <div class="clip-card">
+                <div class="clip-placeholder">Espacio para Video 3</div>
+                <div class="clip-info"><h3>Momento Divertido</h3></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

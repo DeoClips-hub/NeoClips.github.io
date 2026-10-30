@@ -12,7 +12,7 @@
             --bg-card: #0d1938;          
             --accent-cyan: #00f2fe;      
             --accent-blue: #2563eb;      
-            --text-muted: #6b7280;       
+            --text-muted: #94a3b8;       
         }
 
         body {
@@ -22,33 +22,26 @@
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
-            text-align: center;
         }
 
-        /* 1. CORRECCIÓN: Contenedor Adaptable a PC y Móvil */
+        /* Contenedor Adaptable */
         .wrapper {
-            max-width: 1000px; /* Tamaño ideal extendido para pantallas de computadora */
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
             box-sizing: border-box;
         }
 
-        /* Ajuste para que en PC el contenido principal no se estire de forma extraña */
-        .hero-section, .navigation-box, .top-profile-bar {
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* 2. CORRECCIÓN: Barra superior ajustada y sin la 'X' */
+        /* 1. Barra de Perfil Superior */
         .top-profile-bar {
             background: var(--bg-card);
             border-radius: 40px;
             padding: 10px 24px;
             display: flex;
             align-items: center;
-            justify-content: center; /* Centrado estético del título */
-            margin-top: 10px;
+            justify-content: center;
+            margin: 10px auto 20px auto;
+            max-width: 600px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -59,7 +52,7 @@
         }
 
         .avatar-img {
-            width: 32px; /* Tamaño ideal y sutil */
+            width: 32px;
             height: 32px;
             border-radius: 50%;
             background: #ffffff;
@@ -68,12 +61,12 @@
 
         .profile-name {
             font-weight: 900;
-            font-size: 1.1rem; /* Tamaño proporcional */
+            font-size: 1.1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        /* 3. CORRECCIÓN: Barra de menú con "Valbuena Creativa" */
+        /* 2. Menú de Navegación "Glassmorphism" */
         .navigation-box {
             background: rgba(13, 25, 56, 0.6);
             backdrop-filter: blur(10px);
@@ -81,7 +74,8 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 24px;
             padding: 25px;
-            margin: 15px auto;
+            margin: 0 auto 40px auto;
+            max-width: 600px;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -96,6 +90,7 @@
             opacity: 0.8;
             transition: opacity 0.2s, color 0.2s;
             cursor: pointer;
+            display: inline-block;
         }
 
         .nav-link:hover {
@@ -117,7 +112,6 @@
             text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .btn-action-primary:hover {
@@ -125,26 +119,25 @@
             box-shadow: 0 4px 20px rgba(0, 242, 254, 0.4);
         }
 
-        /* 4. CORRECCIÓN: Panel Desplegable Interactivo para Contacto */
+        /* Menú Desplegable de Contacto Suave */
         .contact-dropdown {
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-            background: rgba(7, 15, 36, 0.8);
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            background: rgba(7, 15, 36, 0.9);
             border-radius: 16px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            padding: 0 15px;
+            padding: 0;
         }
 
-        /* Clase activa controlada por JavaScript */
         .contact-dropdown.active {
-            max-height: 200px; /* Espacio para deslizarse suavemente */
+            max-height: 150px;
             opacity: 1;
             padding: 15px;
-            margin-top: 10px;
+            margin-top: 5px;
             border: 1px solid rgba(0, 242, 254, 0.2);
         }
 
@@ -157,143 +150,103 @@
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.03);
             transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            display: block;
+            text-align: center;
         }
 
         .dropdown-item.ig:hover { background: #e1306c; }
         .dropdown-item.wa:hover { background: #25d366; }
 
-        /* Sección Hero */
+        /* Presentación de Slogan */
         .hero-section {
             margin: 40px auto;
-        }
-
-        .sub-tag {
-            color: #3b82f6;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .brand-title-area {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .software-tag {
-            background: rgba(37, 99, 235, 0.15);
-            border: 1px solid rgba(37, 99, 235, 0.4);
-            color: #3b82f6;
-            padding: 8px 12px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            text-align: center;
         }
 
         .brand-main-title {
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             font-weight: 900;
-            letter-spacing: 1px;
-            margin: 0;
+            letter-spacing: 2px;
+            margin: 0 0 10px 0;
             text-transform: uppercase;
+            background: linear-gradient(45deg, #00f2fe, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-description {
-            color: #94a3b8;
-            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-size: 1.2rem;
             line-height: 1.6;
-            padding: 0 10px;
-            margin-bottom: 30px;
+            margin: 0;
         }
 
-        .hero-description strong {
-            color: #ffffff;
-        }
-
-        .hero-buttons-container {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-
-        .btn-pill {
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.2s;
-        }
-
-        .btn-pill.filled {
-            background: var(--accent-blue);
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-pill.outline {
-            background: transparent;
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        /* Cuadrículas de Galería Adaptables (1 columna móvil / 2 o 3 columnas en PC) */
+        /* 3. Paneles de Información Visibles */
         .content-panel {
             text-align: left;
-            margin-top: 50px;
+            margin-top: 60px;
+            padding-top: 20px;
         }
 
         .panel-title {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 20px;
-            border-left: 3px solid var(--accent-cyan);
-            padding-left: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 12px;
+            font-weight: 900;
         }
 
+        /* Cuadrículas que se adaptan a PC (3 columnas) y Móvil (1 columna) */
         .media-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            justify-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .slanted-card {
-            width: 100%;
-            max-width: 340px;
-            height: 190px;
-            background: #ffffff;
+            background: var(--bg-card);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
-            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Inclinación sutil responsiva */
-        .media-cards-grid .slanted-card:nth-child(1) { transform: rotate(-2deg); }
-        .media-cards-grid .slanted-card:nth-child(2) { transform: rotate(2deg); }
+        /* Efecto de inclinación responsivo equilibrado */
+        .media-cards-grid .slanted-card:nth-child(1) { transform: rotate(-1.5deg); }
+        .media-cards-grid .slanted-card:nth-child(2) { transform: rotate(1.5deg); }
         .media-cards-grid .slanted-card:nth-child(3) { transform: rotate(-1deg); }
 
         .slanted-card:hover {
-            transform: rotate(0deg) scale(1.04) !important;
+            transform: rotate(0deg) scale(1.03) !important;
         }
 
         .card-image-fill {
             width: 100%;
-            height: 100%;
+            height: 180px;
             object-fit: cover;
+        }
+
+        /* Estilo para las descripciones de tus productos e información */
+        .card-info {
+            padding: 20px;
+        }
+
+        .card-info h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+        }
+
+        .card-info p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -301,7 +254,7 @@
 
     <div class="wrapper">
 
-        <!-- 1 y 2. Barra de Perfil Limpia (Sin X) -->
+        <!-- Barra de Perfil -->
         <div class="top-profile-bar">
             <div class="profile-info">
                 <img src="logo.png" alt="Logo" class="avatar-img">
@@ -309,14 +262,13 @@
             </div>
         </div>
 
-        <!-- 3. Menú de Navegación con Botón "Valbuena Creativa" -->
+        <!-- Menú de Navegación -->
         <div class="navigation-box">
             <a href="#trabajos" class="nav-link">Trabajos</a>
             <a href="#productos" class="nav-link">Productos</a>
-            
-            <!-- 4. Elemento de Contacto Interactivo -->
             <span id="contactTrigger" class="nav-link">Contacto</span>
             
+            <!-- Bloque desplegable de redes -->
             <div id="contactDropdown" class="contact-dropdown">
                 <a href="https://instagram.com" target="_blank" class="dropdown-item ig">
                     📸 Instagram: @koff_san
@@ -329,3 +281,34 @@
             <a href="#productos" class="btn-action-primary">Valbuena Creativa</a>
         </div>
 
+        <!-- Slogan Principal -->
+        <div class="hero-section">
+            <h2 class="brand-main-title">NEOCLIPS</h2>
+            <p class="hero-description">
+                La nueva forma de crear y ver video. <br>
+                Contenido corto, dinámico digital.
+            </p>
+        </div>
+
+        <!-- SECCIÓN 1: TRABAJOS -->
+        <div id="trabajos" class="content-panel">
+            <div class="panel-title">Mis Trabajos</div>
+            <div class="media-cards-grid">
+                
+                <div class="slanted-card">
+                    <img src="https://unsplash.com" alt="Edición de Video" class="card-image-fill">
+                    <div class="card-info">
+                        <h4>🎬 Edición de Videos</h4>
+                        <p>Creación y postproducción de clips dinámicos orientados a plataformas digitales y redes sociales.</p>
+                    </div>
+                </div>
+
+                <div class="slanted-card">
+                    <img src="https://unsplash.com" alt="Fotos" class="card-image-fill">
+                    <div class="card-info">
+                        <h4>📸 Producción de Fotos</h4>
+                        <p>Retoque digital, optimización de color y capturas profesionales adaptadas a tu identidad.</p>
+                    </div>
+                </div>
+
+                <div class="slanted-card">

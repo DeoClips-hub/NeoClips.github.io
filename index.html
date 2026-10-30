@@ -1,314 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoClips | Portafolio</title>
-    <!-- Cargamos tipografía moderna -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #070f24;          
-            --bg-card: #0d1938;          
-            --accent-cyan: #00f2fe;      
-            --accent-blue: #2563eb;      
-            --text-muted: #94a3b8;       
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        /* Contenedor Adaptable */
-        .wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Barra de Perfil Superior */
-        .top-profile-bar {
-            background: var(--bg-card);
-            border-radius: 40px;
-            padding: 10px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 10px auto 20px auto;
-            max-width: 600px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .profile-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .avatar-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #ffffff;
-            object-fit: cover;
-        }
-
-        .profile-name {
-            font-weight: 900;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* 2. Menú de Navegación "Glassmorphism" */
-        .navigation-box {
-            background: rgba(13, 25, 56, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
-            padding: 25px;
-            margin: 0 auto 40px auto;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            box-sizing: border-box;
-        }
-
-        .nav-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 700;
-            opacity: 0.8;
-            transition: opacity 0.2s, color 0.2s;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .nav-link:hover {
-            opacity: 1;
-            color: var(--accent-cyan);
-        }
-
-        .btn-action-primary {
-            background: var(--accent-blue);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 30px;
-            font-weight: 900;
-            font-size: 1rem;
-            display: block;
-            margin-top: 5px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn-action-primary:hover {
-            background: #1d4ed8;
-            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.4);
-        }
-
-        /* Menú Desplegable de Contacto Suave */
-        .contact-dropdown {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.3s ease;
-            background: rgba(7, 15, 36, 0.9);
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding: 0;
-        }
-
-        .contact-dropdown.active {
-            max-height: 150px;
-            opacity: 1;
-            padding: 15px;
-            margin-top: 5px;
-            border: 1px solid rgba(0, 242, 254, 0.2);
-        }
-
-        .dropdown-item {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 700;
-            padding: 10px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            transition: background 0.2s;
-            display: block;
-            text-align: center;
-        }
-
-        .dropdown-item.ig:hover { background: #e1306c; }
-        .dropdown-item.wa:hover { background: #25d366; }
-
-        /* Presentación de Slogan */
-        .hero-section {
-            margin: 40px auto;
-            text-align: center;
-        }
-
-        .brand-main-title {
-            font-size: 2.6rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #00f2fe, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-description {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* 3. Paneles de Información Visibles */
-        .content-panel {
-            text-align: left;
-            margin-top: 60px;
-            padding-top: 20px;
-        }
-
-        .panel-title {
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-            border-left: 4px solid var(--accent-cyan);
-            padding-left: 12px;
-            font-weight: 900;
-        }
-
-        /* Cuadrículas que se adaptan a PC (3 columnas) y Móvil (1 columna) */
-        .media-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .slanted-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Efecto de inclinación responsivo equilibrado */
-        .media-cards-grid .slanted-card:nth-child(1) { transform: rotate(-1.5deg); }
-        .media-cards-grid .slanted-card:nth-child(2) { transform: rotate(1.5deg); }
-        .media-cards-grid .slanted-card:nth-child(3) { transform: rotate(-1deg); }
-
-        .slanted-card:hover {
-            transform: rotate(0deg) scale(1.03) !important;
-        }
-
-        .card-image-fill {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        /* Estilo para las descripciones de tus productos e información */
-        .card-info {
-            padding: 20px;
-        }
-
-        .card-info h4 {
-            margin: 0 0 10px 0;
-            font-size: 1.2rem;
-            color: var(--accent-cyan);
-        }
-
-        .card-info p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-    </style>
-</head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Valbuena Creativa: edición de video, creación de contenido digital, llaveros, fotocopias y sublimación.">
+<title>Valbuena Creativa | Edición de video y creatividad digital</title>
+<style>
+:root{--bg:#07152d;--panel:#10264b;--blue:#3986f5;--cyan:#54d5ff;--white:#f7faff;--muted:#b7c5dc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,91%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#07152deF;border-bottom:1px solid #ffffff18;backdrop-filter:blur(12px)}
+nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.04em}.brand img{width:48px;height:48px;object-fit:contain;background:white;border-radius:50%;padding:3px}.brand span{font-size:17px}
+nav ul{display:flex;gap:24px;list-style:none;padding:0;margin:0;font-size:14px;font-weight:700;color:#dce8ff}
+.hero{position:relative;overflow:hidden;padding:92px 0 85px;background:radial-gradient(ellipse at 75% 45%,#17488c 0%,#0b2550 38%,#07152d 75%)}
+.hero:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:780px}.tag{display:inline-block;border:1px solid #ffffff28;background:#ffffff0d;border-radius:30px;padding:8px 17px;color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+h1{font-size:clamp(45px,8vw,88px);line-height:.98;letter-spacing:-.045em;margin:24px 0 18px}h1 span{color:var(--blue)}.lead{font-size:clamp(18px,2.5vw,23px);color:#d3e0f5;max-width:650px;margin:0}.lead strong{color:var(--cyan)}
+.buttons{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}.btn{display:inline-block;background:var(--blue);padding:13px 24px;border-radius:32px;font-weight:800;box-shadow:0 8px 28px #2879ef38}.btn.outline{background:#ffffff0b;border:1px solid #ffffff35;box-shadow:none}
+section{padding:76px 0}.heading{text-align:center;max-width:700px;margin:0 auto 38px}.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px}.heading h2{font-size:clamp(30px,5vw,46px);margin:8px 0}.heading p{color:var(--muted);margin:0}
+.video-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}.feature{min-height:320px;border-radius:22px;padding:30px;background:linear-gradient(145deg,#173e76,#0c2144);border:1px solid #ffffff20;display:flex;flex-direction:column;justify-content:flex-end}.feature .symbol{font-size:50px;color:var(--cyan);font-weight:900}.feature h3{font-size:28px;margin:10px 0 4px}.feature p{color:var(--muted);margin:0}.side{display:grid;gap:22px}.mini{border-radius:22px;padding:25px;background:#10264b;border:1px solid #ffffff18}.mini h3{margin:0 0 6px;font-size:21px}.mini p{margin:0;color:var(--muted)}
+.services{background:#0a1c38}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#10264b;border:1px solid #ffffff18;border-radius:18px;overflow:hidden}.card img{display:block;width:100%;height:210px;object-fit:contain;background:white;padding:12px}.card .copy{padding:20px}.card h3{margin:0 0 7px}.card p{color:var(--muted);font-size:14px;margin:0}
+.about{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:center;max-width:850px;margin:auto}.about img{width:150px;height:150px;object-fit:contain;background:white;border-radius:22px;padding:10px}.about p{color:var(--muted)}
+.contact{background:linear-gradient(130deg,#0e2b58,#07152d)}.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.contact-item{border:1px solid #ffffff24;background:#ffffff0b;padding:20px;border-radius:16px;overflow-wrap:anywhere}.contact-item small{display:block;color:var(--cyan);margin-bottom:5px}.contact-item strong{font-size:15px}
+footer{text-align:center;padding:24px;color:#9eafca;border-top:1px solid #ffffff18;font-size:13px}
+@media(max-width:720px){nav{padding:12px 0;align-items:flex-start;flex-direction:column}.brand img{width:40px;height:40px}nav ul{gap:17px;flex-wrap:wrap;font-size:13px}.hero{padding:70px 0}.video-grid,.cards,.contact-grid{grid-template-columns:1fr}.feature{min-height:260px}.about{grid-template-columns:1fr;text-align:center}.about img{margin:auto}.card img{height:190px}}
+</style></head>
 <body>
-
-    <div class="wrapper">
-
-        <!-- Barra de Perfil -->
-        <div class="top-profile-bar">
-            <div class="profile-info">
-                <img src="logo.png" alt="Logo" class="avatar-img">
-                <span class="profile-name">NEOCLIPS</span>
-            </div>
-        </div>
-
-        <!-- Menú de Navegación -->
-        <div class="navigation-box">
-            <a href="#trabajos" class="nav-link">Trabajos</a>
-            <a href="#productos" class="nav-link">Productos</a>
-            <span id="contactTrigger" class="nav-link">Contacto</span>
-            
-            <!-- Bloque desplegable de redes -->
-            <div id="contactDropdown" class="contact-dropdown">
-                <a href="https://instagram.com" target="_blank" class="dropdown-item ig">
-                    📸 Instagram: @koff_san
-                </a>
-                <a href="https://wa.me" target="_blank" class="dropdown-item wa">
-                    💬 WhatsApp: +58 412-9144496
-                </a>
-            </div>
-
-            <a href="#productos" class="btn-action-primary">Valbuena Creativa</a>
-        </div>
-
-        <!-- Slogan Principal -->
-        <div class="hero-section">
-            <h2 class="brand-main-title">NEOCLIPS</h2>
-            <p class="hero-description">
-                La nueva forma de crear y ver video. <br>
-                Contenido corto, dinámico digital.
-            </p>
-        </div>
-
-        <!-- SECCIÓN 1: TRABAJOS -->
-        <div id="trabajos" class="content-panel">
-            <div class="panel-title">Mis Trabajos</div>
-            <div class="media-cards-grid">
-                
-                <div class="slanted-card">
-                    <img src="https://unsplash.com" alt="Edición de Video" class="card-image-fill">
-                    <div class="card-info">
-                        <h4>🎬 Edición de Videos</h4>
-                        <p>Creación y postproducción de clips dinámicos orientados a plataformas digitales y redes sociales.</p>
-                    </div>
-                </div>
-
-                <div class="slanted-card">
-                    <img src="https://unsplash.com" alt="Fotos" class="card-image-fill">
-                    <div class="card-info">
-                        <h4>📸 Producción de Fotos</h4>
-                        <p>Retoque digital, optimización de color y capturas profesionales adaptadas a tu identidad.</p>
-                    </div>
-                </div>
-
-                <div class="slanted-card">
+<header><div class="wrap"><nav>
+<a class="brand" href="#inicio"><img src="logo-neoclips.jpg" alt="Logo NeoClips"><span>VALBUENA CREATIVA</span></a>
+<ul><li><a href="#video">Edición de video</a></li><li><a href="#servicios">Otros servicios</a></li><li><a href="#contacto">Contacto</a></li></ul>
+</nav></div></header>
+<main>
+<section class="hero" id="inicio"><div class="wrap"><div class="hero-content">
+<div class="tag">Edición · Creatividad · Contenido digital</div>
+<h1>VALBUENA<br><span>CREATIVA</span></h1>
+<p class="lead">Damos vida a tus ideas con <strong>edición de video</strong>, contenido dinámico y soluciones creativas para tu marca.</p>
+<div class="buttons"><a class="btn" href="https://wa.me/584129144496">¡Hablemos!</a><a class="btn outline" href="#video">Ver servicios</a></div>
+</div></div></section>
+<section id="video"><div class="wrap"><div class="heading"><div class="eyebrow">Nuestro fuerte</div><h2>Edición de video y contenido digital</h2><p>Convertimos tus ideas en videos atractivos que captan miradas y comunican tu mensaje.</p></div>
+<div class="video-grid">
+<div class="feature"><div class="symbol">▶</div><h3>Edición de video</h3><p>Videos para redes sociales, contenido corto, reels, promociones y proyectos audiovisuales.</p></div>
+<div class="side"><div class="mini"><h3>Contenido corto y dinámico</h3><p>Edición ágil, ritmo, textos y recursos visuales para que tu contenido destaque.</p></div><div class="mini"><h3>Creatividad para redes</h3><p>Piezas audiovisuales pensadas para presentar productos, ideas y marcas en digital.</p></div></div>
+</div></div></section>
+<section class="services" id="servicios"><div class="wrap"><div class="heading"><div class="eyebrow">También hacemos</div><h2>Más creatividad para ti</h2><p>Servicios personalizados para complementar tus ideas y proyectos.</p></div>
+<div class="cards">
+<article class="card"><img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=900&q=85" alt="Accesorios y llaveros"><div class="copy"><h3>Llaveros personalizados</h3><p>Detalles con nombres, fotos, diseños y mensajes especiales.</p></div></article>
+<article class="card"><img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=85" alt="Papelería e impresiones"><div class="copy"><h3>Fotocopias e impresiones</h3><p>Copias y material impreso para estudios, trabajo y uso personal.</p></div></article>
+<article class="card"><img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=900&q=85" alt="Artículos para sublimación"><div class="copy"><h3>Sublimación</h3><p>Artículos personalizados con imágenes, nombres y diseños a tu gusto.</p></div></article>
+</div></div></section>
+<section><div class="wrap"><div class="about"><img src="logo-neoclips.jpg" alt="Logo NeoClips"><div><div class="eyebrow">Nuestra identidad digital</div><h2>NEOCLIPS</h2><h3>La nueva forma de crear y ver video.</h3><p>Contenido corto, <strong>dinámico digital</strong>. Una propuesta creativa enfocada en la edición y producción de contenido audiovisual.</p></div></div></div></section>
+<section class="contact" id="contacto"><div class="wrap"><div class="heading"><div class="eyebrow">Conversemos</div><h2>Cuéntanos tu idea</h2><p>Contáctanos para solicitar información o cotizar tu próximo proyecto.</p></div>
+<div class="contact-grid"><a class="contact-item" href="https://wa.me/584129144496"><small>WhatsApp</small><strong>+58 412 9144496</strong></a><a class="contact-item" href="https://www.instagram.com/koff_san/?hl=es-la"><small>Instagram</small><strong>@koff_san</strong></a><a class="contact-item" href="mailto:yasmiravalbuena29@gmail.com"><small>Correo electrónico</small><strong>yasmiravalbuena29@gmail.com</strong></a></div>
+</div></section></main>
+<footer>© 2026 Valbuena Creativa · Edición de video y servicios creativos.</footer>
+</body></html>

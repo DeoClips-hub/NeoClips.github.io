@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeoClips | Portafolio</title>
-    <!-- Cargamos tipografía moderna similar a la de Solazzo -->
+    <!-- Cargamos tipografía moderna -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        /* Variables de color de la referencia */
         :root {
-            --bg-dark: #070f24;          /* Fondo azul profundo ultra oscuro */
-            --bg-card: #0d1938;          /* Fondo de los bloques y menús */
-            --accent-cyan: #00f2fe;      /* Brillo cian */
-            --accent-blue: #2563eb;      /* Botón principal azul */
-            --text-muted: #6b7280;       /* Gris para etiquetas secundarias */
+            --bg-dark: #070f24;          
+            --bg-card: #0d1938;          
+            --accent-cyan: #00f2fe;      
+            --accent-blue: #2563eb;      
+            --text-muted: #6b7280;       
         }
 
         body {
@@ -26,22 +25,29 @@
             text-align: center;
         }
 
-        /* Contenedor Principal Ajustado a Móviles */
+        /* 1. CORRECCIÓN: Contenedor Adaptable a PC y Móvil */
         .wrapper {
-            max-width: 480px;
+            max-width: 1000px; /* Tamaño ideal extendido para pantallas de computadora */
             margin: 0 auto;
             padding: 20px;
             box-sizing: border-box;
         }
 
-        /* 1. Barra Superior con Perfil, Nombre y X Cierre */
+        /* Ajuste para que en PC el contenido principal no se estire de forma extraña */
+        .hero-section, .navigation-box, .top-profile-bar {
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 2. CORRECCIÓN: Barra superior ajustada y sin la 'X' */
         .top-profile-bar {
             background: var(--bg-card);
             border-radius: 40px;
-            padding: 8px 20px;
+            padding: 10px 24px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center; /* Centrado estético del título */
             margin-top: 10px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -53,28 +59,21 @@
         }
 
         .avatar-img {
-            width: 36px;
-            height: 36px;
+            width: 32px; /* Tamaño ideal y sutil */
+            height: 32px;
             border-radius: 50%;
             background: #ffffff;
             object-fit: cover;
         }
 
         .profile-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
+            font-weight: 900;
+            font-size: 1.1rem; /* Tamaño proporcional */
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        .close-icon {
-            color: #ffffff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0.8;
-        }
-
-        /* 2. Menú de Navegación "Glass" Desplegable */
+        /* 3. CORRECCIÓN: Barra de menú con "Valbuena Creativa" */
         .navigation-box {
             background: rgba(13, 25, 56, 0.6);
             backdrop-filter: blur(10px);
@@ -82,19 +81,21 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 24px;
             padding: 25px;
-            margin: 15px 0;
+            margin: 15px auto;
             display: flex;
             flex-direction: column;
             gap: 15px;
+            box-sizing: border-box;
         }
 
         .nav-link {
             color: #ffffff;
             text-decoration: none;
             font-size: 1.1rem;
-            font-weight: 400;
+            font-weight: 700;
             opacity: 0.8;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s, color 0.2s;
+            cursor: pointer;
         }
 
         .nav-link:hover {
@@ -102,28 +103,72 @@
             color: var(--accent-cyan);
         }
 
-        /* Botón Hablemos Central */
         .btn-action-primary {
             background: var(--accent-blue);
             color: #ffffff;
             text-decoration: none;
-            padding: 12px;
+            padding: 14px;
             border-radius: 30px;
-            font-weight: 700;
+            font-weight: 900;
             font-size: 1rem;
             display: block;
-            margin-top: 10px;
+            margin-top: 5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .btn-action-primary:hover {
-            transform: scale(1.02);
+            background: #1d4ed8;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.4);
         }
 
-        /* 3. Sección de Presentación (Hero) */
+        /* 4. CORRECCIÓN: Panel Desplegable Interactivo para Contacto */
+        .contact-dropdown {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            background: rgba(7, 15, 36, 0.8);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0 15px;
+        }
+
+        /* Clase activa controlada por JavaScript */
+        .contact-dropdown.active {
+            max-height: 200px; /* Espacio para deslizarse suavemente */
+            opacity: 1;
+            padding: 15px;
+            margin-top: 10px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .dropdown-item {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .dropdown-item.ig:hover { background: #e1306c; }
+        .dropdown-item.wa:hover { background: #25d366; }
+
+        /* Sección Hero */
         .hero-section {
-            margin: 40px 0;
+            margin: 40px auto;
         }
 
         .sub-tag {
@@ -143,7 +188,6 @@
             margin-bottom: 20px;
         }
 
-        /* Bloques de software (Ae / Pr / Valbuena) */
         .software-tag {
             background: rgba(37, 99, 235, 0.15);
             border: 1px solid rgba(37, 99, 235, 0.4);
@@ -174,7 +218,6 @@
             color: #ffffff;
         }
 
-        /* Botones de Acción Inferiores */
         .hero-buttons-container {
             display: flex;
             gap: 12px;
@@ -204,11 +247,7 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .btn-pill:hover {
-            transform: translateY(-2px);
-        }
-
-        /* 4. Galería de Trabajos / Productos (Tarjetas Rotadas Estilo Solazzo) */
+        /* Cuadrículas de Galería Adaptables (1 columna móvil / 2 o 3 columnas en PC) */
         .content-panel {
             text-align: left;
             margin-top: 50px;
@@ -224,31 +263,31 @@
         }
 
         .media-cards-grid {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            align-items: center;
+            justify-items: center;
         }
 
-        /* Tarjeta con inclinación idéntica a la imagen */
         .slanted-card {
             width: 100%;
-            height: 180px;
+            max-width: 340px;
+            height: 190px;
             background: #ffffff;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
             cursor: pointer;
         }
 
-        /* Inclinaciones alternadas sutiles para emular la referencia */
-        .media-cards-grid .slanted-card:nth-child(1) { transform: rotate(-3deg); }
+        /* Inclinación sutil responsiva */
+        .media-cards-grid .slanted-card:nth-child(1) { transform: rotate(-2deg); }
         .media-cards-grid .slanted-card:nth-child(2) { transform: rotate(2deg); }
-        .media-cards-grid .slanted-card:nth-child(3) { transform: rotate(-2deg); }
+        .media-cards-grid .slanted-card:nth-child(3) { transform: rotate(-1deg); }
 
         .slanted-card:hover {
-            transform: rotate(0deg) scale(1.03) !important;
+            transform: rotate(0deg) scale(1.04) !important;
         }
 
         .card-image-fill {
@@ -262,62 +301,31 @@
 
     <div class="wrapper">
 
-        <!-- 1. Barra de Perfil -->
+        <!-- 1 y 2. Barra de Perfil Limpia (Sin X) -->
         <div class="top-profile-bar">
             <div class="profile-info">
-                <!-- Tu logo cargará de forma esférica aquí -->
                 <img src="logo.png" alt="Logo" class="avatar-img">
-                <span class="profile-name">Neoclips</span>
+                <span class="profile-name">NEOCLIPS</span>
             </div>
-            <div class="close-icon">✕</div>
         </div>
 
-        <!-- 2. Menú de Navegación "Glassmorphism" -->
+        <!-- 3. Menú de Navegación con Botón "Valbuena Creativa" -->
         <div class="navigation-box">
             <a href="#trabajos" class="nav-link">Trabajos</a>
-            <a href="#productos" class="nav-link">Valbuena Creativa</a>
-            <a href="https://instagram.com" target="_blank" class="nav-link">Contacto</a>
-            <a href="#contacto-directo" class="btn-action-primary">Hablemos!</a>
-        </div>
-
-        <!-- 3. Sección Principal (Hero) -->
-        <div class="hero-section">
-            <div class="sub-tag">Editor & Director Creativo</div>
+            <a href="#productos" class="nav-link">Productos</a>
             
-            <div class="brand-title-area">
-                <div class="software-tag">Vc</div>
-                <h2 class="brand-main-title">Neoclips</h2>
-                <div class="software-tag">🎬</div>
+            <!-- 4. Elemento de Contacto Interactivo -->
+            <span id="contactTrigger" class="nav-link">Contacto</span>
+            
+            <div id="contactDropdown" class="contact-dropdown">
+                <a href="https://instagram.com" target="_blank" class="dropdown-item ig">
+                    📸 Instagram: @koff_san
+                </a>
+                <a href="https://wa.me" target="_blank" class="dropdown-item wa">
+                    💬 WhatsApp: +58 412-9144496
+                </a>
             </div>
 
-            <p class="hero-description">
-                La nueva forma de crear y ver video. <br>
-                Contenido corto, <strong>dinámico digital</strong>.
-            </p>
-
-            <div class="hero-buttons-container">
-                <a href="#trabajos" class="btn-pill filled">Ver Trabajos</a>
-                <a href="#productos" class="btn-pill outline">Productos</a>
-            </div>
+            <a href="#productos" class="btn-action-primary">Valbuena Creativa</a>
         </div>
 
-        <!-- 4. Galería de Muestras (Trabajos / Portafolio) -->
-        <div id="trabajos" class="content-panel">
-            <div class="panel-title">Muestras de Edición</div>
-            <div class="media-cards-grid">
-                
-                <!-- Tarjeta de Video 1 -->
-                <div class="slanted-card">
-                    <img src="https://unsplash.com" alt="Edición de Video" class="card-image-fill">
-                </div>
-
-                <!-- Tarjeta de Video 2 -->
-                <div class="slanted-card">
-                    <img src="https://unsplash.com" alt="Efectos Visuales" class="card-image-fill">
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 5. Galería de Productos (Valbuena Creativa) -->
-        <div id="productos" class="content-panel">
